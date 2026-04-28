@@ -2,6 +2,12 @@
 
 Homebrew formulae for Lightless Labs tools.
 
+## middens
+
+[`middens`](https://github.com/Lightless-Labs/third-thoughts/tree/main/middens) is a Rust CLI for analyzing AI coding-agent session logs — basically archaeological fieldwork for Claude Code, Codex, and friends. It parses transcripts, classifies sessions, runs a 23-technique analysis battery, and can export the results as a Jupyter notebook.
+
+It is part of the [Third Thoughts](https://github.com/Lightless-Labs/third-thoughts) research project.
+
 ## Install middens
 
 ```bash
