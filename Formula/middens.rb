@@ -4,14 +4,14 @@ class Middens < Formula
   license "AGPL-3.0-or-later"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.0/middens-0.0.1-beta.0-aarch64-apple-darwin.tar.gz"
-    sha256 "8f9a99454910316cf625303711446ec90a01489c9a7ada6e4ed6606753a30f06"
+    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.1/middens-0.0.1-beta.1-aarch64-apple-darwin.tar.gz"
+    sha256 "fa744a051397d4f52bb69ca30549a6842fb05e0ee0260a405b240cfd0fb817fa"
   elsif OS.linux? && Hardware::CPU.arm?
-    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.0/middens-0.0.1-beta.0-aarch64-unknown-linux-gnu.tar.gz"
-    sha256 "8d39a9f3b0f8a0762aaa729578ffee9fe761cc1f32e64a25197e95850a2d9926"
+    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.1/middens-0.0.1-beta.1-aarch64-unknown-linux-gnu.tar.gz"
+    sha256 "baa23267aae0b275ece07f7d3bccc4c2dd50c836fe1f000a70ac7e5d37eec15b"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.0/middens-0.0.1-beta.0-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "7a8f3fdb6445f862179cef9d284858ff763a4aac3400d4ef989ae5676eaf19b0"
+    url "https://github.com/Lightless-Labs/third-thoughts/releases/download/v0.0.1-beta.1/middens-0.0.1-beta.1-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "f8bfc01b8b46de6d450acf3217265585972b23f732343feff0616d124ff40518"
   elsif OS.mac? && Hardware::CPU.intel?
     odie <<~EOS
       middens does not currently publish an x86_64 macOS binary.
