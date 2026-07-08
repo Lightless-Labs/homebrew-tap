@@ -1,0 +1,49 @@
+class Descartes < Formula
+  desc "LLM-backed local system triage, monitoring, and alerting CLI"
+  homepage "https://github.com/Lightless-Labs/descartes"
+  url "https://github.com/Lightless-Labs/descartes/archive/refs/tags/v0.0.47.tar.gz"
+  sha256 "48cc091bc95b142a7e97cc415e3780becffbd6e674d18c9d79cd3bb2a8dfb5b6"
+
+  depends_on "node"
+
+  # Developer ID signed, notarized, and stapled DescartesNotifier.app produced by
+  # the tag-triggered Buildkite release pipeline for the same version tag. It is
+  # installed inside the npm package tree at the exact relative path the CLI's
+  # bundled-helper resolution probes (tools/descartes-cli/src/notification-delivery.js),
+  # so `descartes alerts notifications setup --channel native` works without
+  # configuration. Cross-platform npm installs intentionally exclude this payload.
+  resource "descartes-notifier" do
+    url "https://github.com/Lightless-Labs/descartes/releases/download/v0.0.47/DescartesNotifier.app.zip"
+    sha256 "28894696d509f518a196824a3bafcba6a6de2b1a53f6129c0cd9c6ae6c509d98"
+  end
+
+  def install
+    system "npm", "install", *std_npm_args
+    bin.install_symlink Dir["#{libexec}/bin/*"]
+
+    return unless OS.mac?
+
+    helper_dir = libexec/"lib/node_modules/@lightless-labs/descartes/tools/descartes-cli/native/macos"
+    helper_dir.mkpath
+    # Extract with ditto rather than resource staging: unpack strategies descend
+    # into a single top-level directory, and ditto is the canonical tool for
+    # preserving a signed, stapled .app bundle exactly as released.
+    helper_zip = resource("descartes-notifier")
+    helper_zip.fetch
+    system "ditto", "-x", "-k", helper_zip.cached_download, helper_dir
+  end
+
+  def caveats
+    return unless OS.mac?
+
+    <<~EOS
+      The notarized DescartesNotifier.app notification helper is installed
+      alongside the CLI. Enable native macOS notifications with:
+        descartes alerts notifications setup --channel native
+    EOS
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/descartes --version")
+  end
+end
