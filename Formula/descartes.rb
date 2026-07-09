@@ -19,6 +19,15 @@ class Descartes < Formula
 
   def install
     system "npm", "install", *std_npm_args
+
+    # Descartes does not use Pi's optional native clipboard package. Remove its
+    # prebuilt Mach-O addons so Homebrew does not try to rewrite their install
+    # names during linkage fixes.
+    pi_node_modules = libexec/"lib/node_modules/@lightless-labs/descartes/node_modules"
+    pi_node_modules /= "@earendil-works/pi-coding-agent/node_modules"
+    clipboard_packages = pi_node_modules/"@mariozechner"
+    rm_r clipboard_packages if clipboard_packages.exist?
+
     bin.install_symlink Dir["#{libexec}/bin/*"]
 
     return unless OS.mac?
