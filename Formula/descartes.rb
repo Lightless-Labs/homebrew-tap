@@ -1,8 +1,8 @@
 class Descartes < Formula
   desc "LLM-backed local system triage, monitoring, and alerting CLI"
   homepage "https://github.com/Lightless-Labs/descartes"
-  url "https://github.com/Lightless-Labs/descartes/archive/refs/tags/v0.0.48.tar.gz"
-  sha256 "5d7f7f678c5eed8127120a48911e63f0c15a17586eeefca6e64aa09f6cda699f"
+  url "https://github.com/Lightless-Labs/descartes/archive/refs/tags/v0.0.49.tar.gz"
+  sha256 "2db87b6911f1b8bb78ad671be08cafc640a17f72f5fce8013aad9cefb0c4b568"
 
   depends_on "node"
 
@@ -13,8 +13,8 @@ class Descartes < Formula
   # so `descartes alerts notifications setup --channel native` works without
   # configuration. Cross-platform npm installs intentionally exclude this payload.
   resource "descartes-notifier" do
-    url "https://github.com/Lightless-Labs/descartes/releases/download/v0.0.48/DescartesNotifier.app.zip"
-    sha256 "b17e20f4340524ff822e2f713d197d7d7f5ea0f78d81dd9204e485fdeb541c95"
+    url "https://github.com/Lightless-Labs/descartes/releases/download/v0.0.49/DescartesNotifier.app.zip"
+    sha256 "e80a1b6178d21989fb531cb19363d65da364c74a55941da614a8cf99a1371a1e"
   end
 
   def install
