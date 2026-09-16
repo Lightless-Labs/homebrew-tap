@@ -13,8 +13,8 @@
 # Pessimal.app is notarized and stapled, so that check passes with no network access.
 # packaging/macos/GATEKEEPER.md has the rest.
 cask "pessimal" do
-  version "0.4.0"
-  sha256 "854e6251fcfaef36de06ee271722f66ced621b29a2fe6c67fac9e0ccfa90f1c6"
+  version "0.5.0"
+  sha256 "692b601d01dec2e5af0048cd7c6f08595adfb16646d93d4f39e889f82da1334f"
 
   # The version is interpolated rather than rendered into this line, and the tag is `v` plus the
   # version because scripts/release-guard.sh refuses a tag that disagrees with the workspace version.
