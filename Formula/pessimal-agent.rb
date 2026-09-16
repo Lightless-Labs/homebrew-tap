@@ -17,7 +17,7 @@ class PessimalAgent < Formula
   homepage "https://github.com/Lightless-Labs/pessimal"
   # Stated rather than inferred: four URLs whose names carry a version and a target triple, both
   # full of digits, are not something to leave to Homebrew's version scanner.
-  version "0.3.0"
+  version "0.4.0"
   license "AGPL-3.0-or-later"
 
   # Four archives, one per platform the release builds, and no other platform exists: there is no
@@ -27,23 +27,23 @@ class PessimalAgent < Formula
   # need glibc 2.28 or newer.
   on_macos do
     on_arm do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.3.0/pessimal-agent-0.3.0-aarch64-apple-darwin.tar.gz"
-      sha256 "609fb00965518c9636cb91c8c792b9b6acd9282103205808561d1c4a7fa33ea6"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-aarch64-apple-darwin.tar.gz"
+      sha256 "ca59213fe565320ea4cf3e5ebfbf87a9ffa56f91653e74d67645f9bcdb94aa0a"
     end
     on_intel do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.3.0/pessimal-agent-0.3.0-x86_64-apple-darwin.tar.gz"
-      sha256 "8120a3decb328818ccc38a7920f872e5af945393b8bbbe914710b0d535676e14"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-x86_64-apple-darwin.tar.gz"
+      sha256 "5a0453c5dc3b79b21d6503b1a18cd7581a9de86eee6db3b7a13198977dc2a4d3"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.3.0/pessimal-agent-0.3.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "c7bbc58c9557a7afb99a74ea54acd045225e37efbf4de12cf15f0ae6021a9b7b"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "2a7f6a804fcaf08d8da106c13bc37acd4466c9c32023fd65f477239aa90d3554"
     end
     on_intel do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.3.0/pessimal-agent-0.3.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "3bba60d691b84d2b9ebd79d76c104aeccc4ac3c500c7ff78acf80ad2b1a0315f"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "ffef4d53a07e564a6df92821c01db7fd780ae43e7ccd6e3198193001dc5a1052"
     end
   end
 
@@ -77,16 +77,15 @@ class PessimalAgent < Formula
 
   def caveats
     text = <<~EOS
-      Set the endpoint and preset in:
-        #{etc}/pessimal/pessimal.toml
-      If your backend needs a key, set api_key in that file and make it readable by you alone:
-        chmod 600 #{etc}/pessimal/pessimal.toml
-      Do not give the key to the service as an environment variable: brew services writes the
-      service definition with mode 0644, so other accounts on this machine may be able to read it.
+      Set it up:
+        pessimal-agent init
 
-      Check the config without exporting anything, then start the service:
-        #{opt_bin}/pessimal-agent --config #{etc}/pessimal/pessimal.toml --check
-        brew services start pessimal-agent
+      That asks where to send metrics and for the API key, writes #{etc}/pessimal/pessimal.toml at
+      mode 0600, checks the backend accepts a batch, and offers to start the service.
+
+      The key belongs in that file, not in the service's environment: brew services writes the
+      service definition with mode 0644, so a key there may be readable by other accounts on this
+      machine.
     EOS
     if OS.mac?
       text += <<~EOS
