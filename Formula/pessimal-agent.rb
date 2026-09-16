@@ -17,7 +17,7 @@ class PessimalAgent < Formula
   homepage "https://github.com/Lightless-Labs/pessimal"
   # Stated rather than inferred: four URLs whose names carry a version and a target triple, both
   # full of digits, are not something to leave to Homebrew's version scanner.
-  version "0.4.0"
+  version "0.5.0"
   license "AGPL-3.0-or-later"
 
   # Four archives, one per platform the release builds, and no other platform exists: there is no
@@ -27,23 +27,23 @@ class PessimalAgent < Formula
   # need glibc 2.28 or newer.
   on_macos do
     on_arm do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-aarch64-apple-darwin.tar.gz"
-      sha256 "ca59213fe565320ea4cf3e5ebfbf87a9ffa56f91653e74d67645f9bcdb94aa0a"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.5.0/pessimal-agent-0.5.0-aarch64-apple-darwin.tar.gz"
+      sha256 "b5e38a9eb47c89962adce92b7b32a25cf062f2267301e844c91ce3532b3cdd2f"
     end
     on_intel do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-x86_64-apple-darwin.tar.gz"
-      sha256 "5a0453c5dc3b79b21d6503b1a18cd7581a9de86eee6db3b7a13198977dc2a4d3"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.5.0/pessimal-agent-0.5.0-x86_64-apple-darwin.tar.gz"
+      sha256 "7e0b0a877b6fbc39ebc5fb0981627b9e63feb1e7578405ea0bdbb39f2a070ae1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "2a7f6a804fcaf08d8da106c13bc37acd4466c9c32023fd65f477239aa90d3554"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.5.0/pessimal-agent-0.5.0-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "7de5307c1505dc872c5ac34b76c89ffec82df6589a676f7bb57daed3905551c8"
     end
     on_intel do
-      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.4.0/pessimal-agent-0.4.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "ffef4d53a07e564a6df92821c01db7fd780ae43e7ccd6e3198193001dc5a1052"
+      url "https://github.com/Lightless-Labs/pessimal/releases/download/v0.5.0/pessimal-agent-0.5.0-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "e3326efe221da503b80241ea5c80c507332c5674ff699087dede09275d4072b7"
     end
   end
 
